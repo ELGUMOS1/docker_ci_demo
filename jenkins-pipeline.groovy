@@ -11,8 +11,6 @@ node {
        ])
      }
      stage('Integration Test') {
-       sh "chmod +rwx /usr/local/bin/" 
-       sh "curl -L https://github.com/docker/compose/releases/download/1.21.3/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose && chmod +x /usr/local/bin/docker-compose"
        sh "/usr/local/bin/docker-compose -f docker-ci-demo/docker-compose-ci-test.yaml up -d"
        sh "/usr/bin/docker wait docker-ci-demo_integration_test_1"
      }
